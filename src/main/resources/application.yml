@@ -1,0 +1,53 @@
+# DB 설정
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: ENC(rspoRt8dPqH8mgrn+rG59f4YSrzbaAz30seEOUSVmtdwo7daUyAg1vvmijdPq/AUSQfb3ZAsoKc=)
+    username: ENC(D4OEo1+CLOegtdJFTVp2rQ==)
+    password: ENC(hRYB6Jc30EKYfZamvIEuoHz/p1N1yX+X)
+
+# JPA 설정
+  jpa:
+    # sql console에 출력
+    show-sql: true
+    hibernate:
+      # DB변경 결과 유지
+      ddl-auto: update
+    properties:
+      hibernate:
+        # 가독성 좋은 sql 출력
+        format_sql: true
+
+  security:
+    # OAuth2 설정
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: ${google.client.id}
+            clientSecret: ${google.client.secret}
+            scope:
+              - email
+              - profile
+
+# 로그 설정
+logging:
+  level:
+    org.hibernate.sql: debug
+
+# Jasypt 설정
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
+
+# Cors 설정 및 토큰 secret key, redirectUri 설정
+app:
+  auth:
+    tokenSecret: D78C8475F6C6298752CA4AD5E5E32
+    tokenExpiry: 1800000
+    refreshTokenExpiry: 604800000
+  cors:
+    allowedOrigins: http://localhost:3000,http://localhost:8080
+  oauth2:
+    authorizedRedirectUris:
+      - http://localhost:3000/oauth2/redirect
