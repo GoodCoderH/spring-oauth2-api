@@ -43,7 +43,7 @@ jasypt:
 # Cors 설정 및 토큰 secret key, redirectUri 설정
 app:
   auth:
-    tokenSecret: D78C8475F6C6298752CA4AD5E5E32
+    tokenSecret: ${token.secret}
     tokenExpiry: 1800000
     refreshTokenExpiry: 604800000
   cors:

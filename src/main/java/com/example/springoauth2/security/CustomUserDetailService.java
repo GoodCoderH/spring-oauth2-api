@@ -22,6 +22,7 @@ public class CustomUserDetailService implements UserDetailsService {
                 .orElseThrow(() ->
                         new UsernameNotFoundException("User not found with email : " + email));
 
+        //유저 정보 생성
         return UserPrincipal.create(user);
     }
 }
